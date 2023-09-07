@@ -1,0 +1,11 @@
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+.vscode/
+# native banuba sdk for mobile app
+packages/Revo-mobile/ios/Frameworks/
+packages/Revo-mobile/android/libs
+static
+.DS_Store
