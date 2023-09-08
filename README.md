@@ -56,7 +56,7 @@ Follow these steps to get the project up and running on your local development e
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/full-stack-app-demo.git
+   git clone https://github.com/tripathi789308/react-node-project.git
    ```
 
 ### Running the application
