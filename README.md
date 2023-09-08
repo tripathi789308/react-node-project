@@ -1,72 +1,79 @@
-# Getting Started with Create React App
+# Full-Stack Application Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Full-Stack Application Demo, showcasing the integration of React.js, Material-UI, Node.js, Express.js, and Supabase. This application manages details of agents and their associated customers.
 
-## Available Scripts
+## Table of Contents
 
-### `cd packages/react-dashboard-frontend`
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Getting Started](#getting-started)
+- [Configuration](#configuration)
+- [Running the Application](#running-the-application)
+- [Contributing](#contributing)
+- [License](#license)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This project demonstrates the development of a full-stack web application for managing agent and customer data. It includes a React.js-based frontend for the user interface, a Node.js/Express.js-based backend for API endpoints, and Supabase as the database for storing and retrieving data.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- View a list of agents and their details.
+- View a list of customers associated with each agent.
+- Add, edit, and delete agents and customers.
+- Search for agents and customers.
+- Pagination for large datasets.
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend:
 
-### `npm run build`
+  - React.js: A popular JavaScript library for building user interfaces.
+  - Material-UI: A UI component library for React applications.
+  - JavaScript: The programming language used for the frontend logic.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Backend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Node.js: A JavaScript runtime for building server-side applications.
+  - Express.js: A web application framework for Node.js.
+  - JavaScript: The programming language used for the backend logic.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Database:
+  - Supabase: An open-source alternative to Firebase for building database-driven applications.
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Follow these steps to get the project up and running on your local development environment.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Node.js and npm installed.
+- Supabase project with the required tables and schema.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Configuration
 
-## Learn More
+1. Clone the repository:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   git clone https://github.com/yourusername/full-stack-app-demo.git
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running the application
 
-### Code Splitting
+# commands
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- cd react-node-project
+- cd react-dashboard-frontend
+- npm install
+- cd ../../react-dashboard-backend
+- npm install
+- npm run start
+- cd ../../react-dashboard-frontend
+- npm run start
 
-### Analyzing the Bundle Size
+# You can access the website at `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Lisences
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- You can copy and paste this code into your `README.md` file, replacing the placeholders `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_KEY` with your actual Supabase project details and customize the content as needed.

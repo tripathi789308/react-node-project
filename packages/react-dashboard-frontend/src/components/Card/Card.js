@@ -9,14 +9,12 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-const ScrollableCardList = ({ cardsData, setSelectedId, selectedId }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (cardsData && cardsData.length > 0) setLoading(false);
-    else setLoading(true);
-  }, [cardsData]);
-
+const ScrollableCardList = ({
+  cardsData,
+  setSelectedId,
+  selectedId,
+  loading,
+}) => {
   const handleCardClick = (card) => {
     setSelectedId(card.id);
   };
@@ -35,6 +33,7 @@ const ScrollableCardList = ({ cardsData, setSelectedId, selectedId }) => {
         </div>
       ) : (
         <div style={{ display: "flex" }}>
+          {cardsData.length === 0 && <Typography>No Agents Found</Typography>}
           {cardsData.map((card) => (
             <Paper key={card.id} elevation={1}>
               <Card

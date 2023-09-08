@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, List, ListItem, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DashboardDrawer from "./DashboardDrawer";
 import { getCards, getCardsFromDB } from "../../helpers/cards";
@@ -29,6 +29,7 @@ function DashBoard(props) {
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [loadingTable, setLoadingTable] = useState(true);
+  const [loadingCard, setLoadingCard] = useState(true);
 
   const handleEditClick = (row) => {
     setSelectedRowData(row);
@@ -110,26 +111,36 @@ function DashBoard(props) {
   };
 
   useEffect(() => {
+    setLoadingCard(true);
     getCardsFromDB()
       .then((res) => {
         if (res?.data && res.data?.length > 0) {
           setCards(res.data);
           setSelectedId(res.data[0].id);
         }
+        setLoadingCard(false);
       })
       .catch((err) => {
         console.log("Some Error occured");
+        setLoadingCard(false);
       });
   }, []);
   useEffect(() => {
     setLoadingTable(true);
     if (selectedId) {
-      getCustomersFromDB(selectedId).then((res) => {
-        if (res?.data && res.data?.length > 0) {
-          setTableDetails(res.data);
+      getCustomersFromDB(selectedId)
+        .then((res) => {
+          if (res?.data && res.data?.length > 0) {
+            setTableDetails(res.data);
+          }
           setLoadingTable(false);
-        }
-      });
+        })
+        .catch((err) => {
+          setLoadingTable(false);
+          console.log("Some Error occured");
+        });
+    } else {
+      setLoadingTable(false);
     }
   }, [selectedId]);
 
@@ -150,6 +161,8 @@ function DashBoard(props) {
             cardsData={cards}
             setSelectedId={setSelectedId}
             selectedId={selectedId}
+            loading={loadingCard}
+            setLoading={setLoadingCard}
           />
           <Divider sx={{ padding: "10px", margin: "10px" }} />
           <TableComponent
@@ -162,37 +175,38 @@ function DashBoard(props) {
             setOpenCreateModal={setOpenCreateModal}
           />
           <Divider sx={{ padding: "10px" }} />
-          <Typography variant="h2">Website Information</Typography>
+          <Typography variant="h3">Full-Stack Application Demo</Typography>
           <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-            dolor purus non enim praesent elementum facilisis leo vel. Risus at
-            ultrices mi tempus imperdiet. Semper risus in hendrerit gravida
-            rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean
-            sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-            integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-            eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-            quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-            vivamus at augue. At augue eget arcu dictum varius duis at
-            consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
+            Welcome to the Full-Stack Application Demo, showcasing the
+            integration of React.js, Material-UI, Node.js, Express.js, and
+            Supabase. This application manages details of agents and their
+            associated customers. This project demonstrates the development of a
+            full-stack web application for managing agent and customer data. It
+            includes a React.js-based frontend for the user interface, a
+            Node.js/Express.js-based backend for API endpoints, and Supabase as
+            the database for storing and retrieving data.
           </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-            elementum integer enim neque volutpat ac tincidunt. Ornare
-            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
-            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
-            ornare massa eget egestas purus viverra accumsan in. In hendrerit
-            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
-            aliquam sem et tortor. Habitant morbi tristique senectus et.
-            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
-            euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
+          <List>
+            <ListItem>
+              <Typography>View a list of agents and their details.</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>
+                View a list of customers associated with each agent.
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>
+                Add, edit, and delete agents and customers.
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Search for agents and customers.</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography> Pagination for large datasets.</Typography>
+            </ListItem>
+          </List>
           {isEditDialogOpen && (
             <EditDialog
               open={isEditDialogOpen}
