@@ -93,8 +93,7 @@ const TableComponent = ({
     {
       columns,
       data,
-      initialState: { pageIndex: 0 }, // You can set initial page index here
-      pagination: { pageSize: 5 },
+      initialState: { pageIndex: 0, pageSize: rowsPerPage }, // You can set initial page index here
     },
     useGlobalFilter,
     usePagination
@@ -170,7 +169,9 @@ const TableComponent = ({
         count={data.length}
         rowsPerPage={rowsPerPage}
         page={pageIndex}
-        onPageChange={(e, newPage) => nextPage(newPage)}
+        onPageChange={(e, newPage) => {
+          newPage > pageIndex ? nextPage(newPage) : previousPage(newPage);
+        }}
         onRowsPerPageChange={(e) => {
           setRowsPerPage(e.target.value);
         }}
